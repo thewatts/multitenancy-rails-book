@@ -6,6 +6,10 @@ module Subscribem
     end
 
     def create
+      if env["warden"].authenticate(:scope => :user)
+        flash[:notice] = "You are now signed in."
+        redirect_to root_path
+      end
     end
   end
 end
