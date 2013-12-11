@@ -81,3 +81,63 @@ Processing by Subscribem::DashboardController#index as HTML
   Rendered /Users/watts/code/rails/multitenancy-book/app/views/subscribem/dashboard/index.html.erb within layouts/subscribem/application (0.2ms)
 Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.0ms)
   [1m[35m (2.1ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/subscribem/" for 127.0.0.1 at 2013-12-10 18:01:28 -0700
+Processing by Subscribem::DashboardController#index as HTML
+  Rendered /Users/watts/code/rails/multitenancy-book/app/views/subscribem/dashboard/index.html.erb within layouts/subscribem/application (1.2ms)
+Completed 200 OK in 32ms (Views: 32.0ms | ActiveRecord: 0.0ms)
+Started GET "/subscribem/sign_up" for 127.0.0.1 at 2013-12-10 18:01:28 -0700
+Processing by Subscribem::AccountsController#new as HTML
+  Rendered /Users/watts/code/rails/multitenancy-book/app/views/subscribem/accounts/new.html.erb within layouts/subscribem/application (11.5ms)
+Completed 200 OK in 16ms (Views: 14.1ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddOwnerIdToSubscribemAccounts (20131211010525)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "subscribem_accounts" ADD "owner_id" integer[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20131211010525"]]
+  [1m[36m (2.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/subscribem/" for 127.0.0.1 at 2013-12-10 18:06:29 -0700
+Processing by Subscribem::DashboardController#index as HTML
+  Rendered /Users/watts/code/rails/multitenancy-book/app/views/subscribem/dashboard/index.html.erb within layouts/subscribem/application (1.1ms)
+Completed 200 OK in 27ms (Views: 27.0ms | ActiveRecord: 0.0ms)
+Started GET "/subscribem/sign_up" for 127.0.0.1 at 2013-12-10 18:06:29 -0700
+Processing by Subscribem::AccountsController#new as HTML
+Completed 500 Internal Server Error in 17ms
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateSubscribemUsers (20131211010725)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "subscribem_users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255), "password_digest" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20131211010725"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/subscribem/" for 127.0.0.1 at 2013-12-10 18:09:23 -0700
+Processing by Subscribem::DashboardController#index as HTML
+  Rendered /Users/watts/code/rails/multitenancy-book/app/views/subscribem/dashboard/index.html.erb within layouts/subscribem/application (1.1ms)
+Completed 200 OK in 31ms (Views: 30.3ms | ActiveRecord: 0.0ms)
+Started GET "/subscribem/sign_up" for 127.0.0.1 at 2013-12-10 18:09:23 -0700
+Processing by Subscribem::AccountsController#new as HTML
+  Rendered /Users/watts/code/rails/multitenancy-book/app/views/subscribem/accounts/new.html.erb within layouts/subscribem/application (18.5ms)
+Completed 200 OK in 48ms (Views: 21.6ms | ActiveRecord: 0.5ms)
+Started POST "/subscribem/accounts" for 127.0.0.1 at 2013-12-10 18:09:23 -0700
+Processing by Subscribem::AccountsController#create as HTML
+  Parameters: {"utf8"=>"✓", "account"=>{"name"=>"Test", "owner_attributes"=>{"email"=>"subscribem@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}, "commit"=>"Create Account"}
+Unpermitted parameters: owner_attributes
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (30.6ms)[0m  INSERT INTO "subscribem_accounts" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", Wed, 11 Dec 2013 01:09:23 UTC +00:00], ["name", "Test"], ["updated_at", Wed, 11 Dec 2013 01:09:23 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/subscribem/
+Completed 302 Found in 34ms (ActiveRecord: 30.7ms)
+Started GET "/subscribem/" for 127.0.0.1 at 2013-12-10 18:09:23 -0700
+Processing by Subscribem::DashboardController#index as HTML
+  Rendered /Users/watts/code/rails/multitenancy-book/app/views/subscribem/dashboard/index.html.erb within layouts/subscribem/application (0.2ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.5ms)[0m  rollback transaction
