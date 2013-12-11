@@ -14,7 +14,7 @@ feature "Accounts" do
 
     expect(page).to have_content success_message
     expect(page).to have_content("Signed in as subscribem@example.com")
-    subdomain = "http://test.example.com/subscribem/"
+    subdomain = "http://test.example.com/"
     expect(page.current_url).to eq(subdomain)
   end
 
@@ -28,7 +28,7 @@ feature "Accounts" do
     fill_in "Password", with: "password", exact: true
     fill_in "Password confirmation", with: "password"
     click_button "Create Account"
-    url = "http://www.example.com/subscribem/accounts"
+    url = "http://www.example.com/accounts"
     expect(page.current_url).to eq(url)
     expect(page).to have_content "Sorry, your account could not be created."
     expect(page).to have_content "Subdomain has already been taken"
@@ -43,7 +43,7 @@ feature "Accounts" do
     fill_in "Password", with: "password", exact: true
     fill_in "Password confirmation", with: "password"
     click_button "Create Account"
-    url = "http://www.example.com/subscribem/accounts"
+    url = "http://www.example.com/accounts"
     error = "Subdomain is not allowed. Please choose another subdomain."
 
     expect(page.current_url).to eq(url)
@@ -60,7 +60,7 @@ feature "Accounts" do
     fill_in "Password", with: "password", exact: true
     fill_in "Password confirmation", with: "password"
     click_button "Create Account"
-    url = "http://www.example.com/subscribem/accounts"
+    url = "http://www.example.com/accounts"
     error = "Subdomain is not allowed. Please choose another subdomain."
 
     expect(page.current_url).to eq(url)
